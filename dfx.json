@@ -5,7 +5,7 @@
       "type": "motoko"
     },
     "nft": {
-      "main":"src/nft/nft.mo",
+      "main": "src/NFT/nft.mo",
       "type": "motoko"
     },
     "opend_assets": {

@@ -8,9 +8,9 @@ function initCanisterEnv() {
   let localCanisters, prodCanisters;
   try {
     localCanisters = require(path.resolve(
-      ".dfx",
-      "local",
-      "canister_ids.json"
+        ".dfx",
+        "local",
+        "canister_ids.json"
     ));
   } catch (error) {
     console.log("No local canister_ids.json found. Continuing production");
@@ -22,15 +22,15 @@ function initCanisterEnv() {
   }
 
   const network =
-    process.env.DFX_NETWORK ||
-    (process.env.NODE_ENV === "production" ? "ic" : "local");
+      process.env.DFX_NETWORK ||
+      (process.env.NODE_ENV === "production" ? "ic" : "local");
 
   const canisterConfig = network === "local" ? localCanisters : prodCanisters;
 
   return Object.entries(canisterConfig).reduce((prev, current) => {
     const [canisterName, canisterDetails] = current;
     prev[canisterName.toUpperCase() + "_CANISTER_ID"] =
-      canisterDetails[network];
+        canisterDetails[network];
     return prev;
   }, {});
 }
@@ -82,7 +82,7 @@ module.exports = {
       { test: /\.svg$/, use: ["svg-url-loader"] },
       { test: /\.(jpg|png|webp)$/, use: ["url-loader"] },
     ]
-   },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, asset_entry),
@@ -105,7 +105,6 @@ module.exports = {
       process: require.resolve("process/browser"),
     }),
   ],
-  // proxy /api to port 8000 during development
   devServer: {
     historyApiFallback: true,
     proxy: {
